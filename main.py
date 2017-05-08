@@ -1,10 +1,11 @@
-import kivy
+import os
 
 from kivy.app import App
 from kivy.properties import NumericProperty, ReferenceListProperty
 from kivy.clock import Clock
 from kivy.uix.label import Label, Widget
 from kivy.graphics import Rectangle, Color, Ellipse, Line
+from  kivy.uix.image import Image
 from kivy.vector import Vector
 
 
@@ -19,6 +20,7 @@ class PongBall(Widget):
             Color(1, 1, 0)
             Ellipse(pos=self.pos, size=(70,20))
             Ellipse(pos=[200, 200], size=(70,20))
+            Rectangle(source=os.path.join(os.path.dirname(os.path.realpath(__file__)), 'resources', 'block_1.png'), pos=(40,22))
 
 
 class PongGame(Widget):
@@ -32,7 +34,6 @@ class PongGame(Widget):
 
 
 class MyApp(App):
-
     def build(self):
         ball = PongBall()
         game = PongGame()
