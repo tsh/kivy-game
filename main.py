@@ -22,11 +22,20 @@ class Tile(Widget):
 
 
 class Character(Widget):
+    def __init__(self):
+        super().__init__()
+        self.is_selected = False
+        self.x = 20
+        self.y = 10
+
     def draw(self):
-        self.pos = (20,10)
+        self.r = 0 if self.is_selected else 1
         with self.canvas:
-            Ellipse(pos=self.pos, size=(70, 20))
-            Ellipse(pos=[200, 200], size=(70, 20))
+            Ellipse(pos=(self.x, self.y), size=(70, 20), color=Color(self.r,1,1))
+
+    def on_touch_down(self, touch):
+        self.is_selected = not self.is_selected
+        print(touch)
 
 
 class Game(Widget):
